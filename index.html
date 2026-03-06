@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Свадьба Владислава и Анны</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Фон с гифкой -->
+    <div class="background"></div>
+    <!-- Лепестки -->
+    <div class="petals"></div>
+    
+    <div class="container">
+        <!-- Шапка с именами -->
+        <header>
+            <h1>Владислав & Анна</h1>
+            <p class="subtitle">Приглашение на свадьбу</p>
+        </header>
+        
+        <!-- Фото пары -->
+        <section class="photo">
+            <img src="Фотографии/1.jpg" alt="Владислав и Анна">
+        </section>
+
+        <!-- Блоки Когда и Где -->
+        <div class="when-where-blocks">
+            <!-- Блок Когда -->
+            <div class="when-block">
+                <h2 class="block-title">Когда?</h2>
+                <p class="block-text">
+                    Будем рады видеть Вас<br>
+                    15 августа 2026 г.
+                </p>
+                
+                <!-- Календарь внутри блока Когда -->
+                <div class="mini-calendar">
+                    <div class="calendar-mini-header">Август 2026</div>
+                    <div class="calendar-mini-weekdays">
+                        <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                    </div>
+                    <div class="calendar-mini-dates">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+                        <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                        <span class="mini-heart-date">15</span>
+                        <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
+                        <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span>
+                        <span>30</span><span>31</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Блок Где -->
+            <div class="where-block">
+                <h2 class="block-title">Где?</h2>
+                <p class="block-text">
+                    Клубный отель «Акватория»<br>
+                    Нижегородская область, Городецкий район, п. Турбазы, 3Н
+                </p>
+                
+                <!-- Мини-карта внутри блока -->
+                <div class="mini-map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=43.361853%2C56.780862&z=15&l=map&pt=43.361853%2C56.780862%2Cpm2rdl" 
+                            width="100%" 
+                            height="200" 
+                            frameborder="0"
+                            style="display: block;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Красивый текст для родных -->
+        <section class="family-text">
+            <p>Дорогие дорогие<br>и очагие!</p>
+            <p>Узнали этих карапузов?</p>
+            <p>Да-да! Время летит незаметно,<br>но это не повод грустить, ведь мы<br>повзрослели и приняли важное решение –<br>создать семью!</p>
+        </section>
+
+        <!-- Детские фото -->
+        <section class="child-photos-section">
+            <div class="child-photos-container">
+                <div class="child-photo-wrapper">
+                    <img src="Фотографии/2.jpg" alt="Влад в детстве" class="child-photo left-rotate">
+                    <p class="child-caption">Владислав</p>
+                </div>
+                
+                <div class="child-photo-wrapper">
+                    <img src="Фотографии/3.jpg" alt="Анна в детстве" class="child-photo right-rotate">
+                    <p class="child-caption">Анна</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Таймер -->
+        <section class="countdown">
+            <h2>До нашей свадьбы осталось</h2>
+            <div id="timer">
+                <div><span id="days">0</span><p>дней</p></div>
+                <div><span id="hours">0</span><p>часов</p></div>
+                <div><span id="minutes">0</span><p>минут</p></div>
+                <div><span id="seconds">0</span><p>секунд</p></div>
+            </div>
+        </section>
+        
+        <!-- Форма подтверждения -->
+        <section class="form-section">
+            <h2>Подтвердите присутствие</h2>
+            <form id="weddingForm">
+                <input type="text" placeholder="Ваше имя" required>
+                <select required>
+                    <option value="">Вы придете?</option>
+                    <option>Да, обязательно!</option>
+                    <option>К сожалению, не смогу</option>
+                </select>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </div>
+    
+    <!-- Музыка -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
