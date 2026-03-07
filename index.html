@@ -108,19 +108,55 @@
             </div>
         </section>
         
-        <!-- Встроенная Google Форма -->
-<section class="form-section">
-    <h2>Подтвердите присутствие</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScU87V3IstjFB9akVT_IlzKauE4ZZoXEq6heaNB9kzUaWgYlQ/viewform?embedded=true" 
-            width="100%" 
-            height="900" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0"
-            style="border-radius: 30px; background: rgba(255,255,255,0.1);">
-        Загрузка…
-    </iframe>
-</section>
+               <!-- Форма подтверждения -->
+        <section class="form-section">
+            <h2>Подтвердите присутствие</h2>
+            <form id="weddingForm">
+               <!-- Поле 1: ФИО (большое текстовое поле) -->
+<div class="form-group">
+    <label for="name">Как вас зовут? (Фамилия и Имя)*</label>
+    <textarea id="name" rows="3" placeholder="Иванов Иван" required></textarea>
+</div>
+                
+                <!-- Поле 2: Пойдете ли вы? (радио-кнопки) -->
+                <div class="form-group">
+                    <label>Пойдете ли вы на нашу свадьбу?*</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="С удовольствием пойду!" required> С удовольствием пойду!
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="Пока затрудняюсь ответить"> Пока затрудняюсь ответить
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="К сожалению, не пойду"> К сожалению, не пойду
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Поле 3: С вами кто-то ещё будет? (чекбоксы + другое) -->
+                <div class="form-group">
+                    <label>С вами кто-то ещё будет?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="companions" value="Да, будем с мужем/женой"> Да, будем с мужем/женой
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="companions" value="Нет, буду один/одна"> Нет, буду один/одна
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="companions" value="Буду с детьми (1-3 человека)"> Буду с детьми (1-3 человека)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="companions" value="Другое" id="otherCheckbox"> Другое
+                        </label>
+                        <input type="text" id="otherText" placeholder="Укажите кто именно..." style="margin-top: 10px; display: none;">
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Отправить ответ</button>
+            </form>
+        </section>
     
     <!-- Музыка -->
     <audio id="bg-music" loop>
