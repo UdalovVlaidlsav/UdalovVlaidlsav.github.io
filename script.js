@@ -1,6 +1,3 @@
-// Плавное появление страницы
-document.body.classList.add('ready');
-
 // ===== ТАЙМЕР =====
 const weddingDate = new Date("Aug 15, 2026 16:00:00").getTime();
 
@@ -30,18 +27,9 @@ function updateTimer() {
 updateTimer();
 setInterval(updateTimer, 1000);
 
-// ===== ФОРМА =====
-const form = document.getElementById("weddingForm");
-if (form) {
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        alert("Спасибо! Ваш ответ сохранен ❤");
-        form.reset();
-    });
-}
-
-// ===== ЛЕПЕСТКИ =====
+// ===== ПАДАЮЩИЕ ЛЕПЕСТКИ =====
 const petalsContainer = document.querySelector(".petals");
+
 if (petalsContainer) {
     function createPetal() {
         const petal = document.createElement("span");
@@ -61,36 +49,91 @@ if (petalsContainer) {
 
 // ===== МУЗЫКА =====
 const music = document.getElementById("bg-music");
-
 if (music) {
-    console.log("Музыка найдена");
-    
-    // Пытаемся включить автоматически
-    music.volume = 0.3; // Потише
-    
-    music.play().catch(e => {
-        console.log("Автозапуск не сработал, создаем кнопку");
-        
-        // Создаем кнопку
-        const btn = document.createElement('button');
-        btn.innerHTML = '🎵 Включить музыку';
-        btn.style.position = 'fixed';
-        btn.style.bottom = '90px';
-        btn.style.right = '20px';
-        btn.style.zIndex = '9999';
-        btn.style.background = '#a67c73';
-        btn.style.color = 'white';
-        btn.style.border = 'none';
-        btn.style.borderRadius = '50px';
-        btn.style.padding = '12px 24px';
-        btn.style.fontSize = '16px';
-        btn.style.cursor = 'pointer';
-        
-        btn.addEventListener('click', () => {
+    music.volume = 0.3;
+    music.play().catch(() => {
+        const musicButton = document.createElement('button');
+        musicButton.innerHTML = '🎵 Включить музыку';
+        musicButton.style.position = 'fixed';
+        musicButton.style.bottom = '90px';
+        musicButton.style.right = '20px';
+        musicButton.style.zIndex = '9999';
+        musicButton.style.background = '#a67c73';
+        musicButton.style.color = 'white';
+        musicButton.style.border = 'none';
+        musicButton.style.borderRadius = '50px';
+        musicButton.style.padding = '12px 24px';
+        musicButton.style.fontSize = '16px';
+        musicButton.style.cursor = 'pointer';
+        musicButton.style.fontFamily = 'Cormorant Garamond, serif';
+        musicButton.addEventListener('click', () => {
             music.play();
-            btn.remove();
+            musicButton.remove();
+        });
+        document.body.appendChild(musicButton);
+    });
+}
+
+// ===== ОТПРАВКА ФОРМЫ В GOOGLE TABLES =====
+const form = document.getElementById("weddingForm");
+
+if (form) {
+    // Показываем поле "Другое" при клике на чекбокс
+    const otherCheckbox = document.getElementById('otherCheckbox');
+    const otherText = document.getElementById('otherText');
+    
+    if (otherCheckbox && otherText) {
+        otherCheckbox.addEventListener('change', function() {
+            otherText.style.display = this.checked ? 'block' : 'none';
+            if (!this.checked) otherText.value = '';
+        });
+    }
+    
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        // Собираем данные из формы
+        const nameInput = document.getElementById('name');
+        
+        // Получаем выбранную радио-кнопку
+        const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+        
+        // Собираем все отмеченные чекбоксы
+        const companionCheckboxes = document.querySelectorAll('input[name="companions"]:checked');
+        let companions = [];
+        companionCheckboxes.forEach(cb => {
+            if (cb.value === 'Другое' && otherText && otherText.value) {
+                companions.push(`Другое: ${otherText.value}`);
+            } else {
+                companions.push(cb.value);
+            }
         });
         
-        document.body.appendChild(btn);
+        const formData = {
+            name: nameInput ? nameInput.value : "не указано",
+            attendance: attendanceInput ? attendanceInput.value : "не указано",
+            companions: companions.join(', ') || "не указано"
+        };
+        
+        // Отправка на твой скрипт
+        fetch('https://script.google.com/macros/s/AKfycbzSKAElDoZYWFsH4BfPfkIBq-14maRCi3flEZrDfYip2rOOWAUTREwvuu0Z6z-FMVK5pw/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(() => {
+            alert('Спасибо! Ваш ответ отправлен ❤');
+            form.reset();
+            if (otherText) otherText.style.display = 'none';
+        })
+        .catch((error) => {
+            console.error('Ошибка:', error);
+            alert('Спасибо! Ваш ответ получен');
+            form.reset();
+            if (otherText) otherText.style.display = 'none';
+        });
     });
 }
