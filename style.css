@@ -275,95 +275,8 @@ header h1 {
 }
 
 
-
-/* Адаптация для мобилок */
-@media (max-width: 600px) {
-    /* Шапка и заголовки */
-    header h1 { font-size: 42px; }
-    .subtitle { font-size: 18px; }
-    .block-title { font-size: 36px; }
-    .block-text { font-size: 20px; }
-    .form-section h2 { font-size: 28px; }
-    
-    /* Текст для родных */
-    .family-text { 
-        font-size: 20px; 
-        padding: 30px 20px; 
-    }
-    
-    /* Детские фото */
-    .child-photo { 
-        width: 160px; 
-        height: 160px; 
-        border-width: 8px; 
-    }
-    .child-caption { font-size: 18px; }
-    
-    /* Увеличиваем чекбоксы и радио-кнопки */
-    .radio-option input[type="radio"], 
-    .checkbox-option input[type="checkbox"] {
-        width: 26px !important;
-        height: 26px !important;
-        min-width: 26px;
-        transform: scale(1);
-        margin-right: 8px !important;
-    }
-    
-    /* Увеличиваем отступы для удобства тыка пальцем */
-    .radio-option, .checkbox-option {
-        padding: 8px 0;
-        gap: 15px;
-        font-size: 18px;
-    }
-    
-    /* Делаем группу选项 чуть шире */
-    .radio-group, .checkbox-group {
-        padding: 18px;
-        gap: 15px;
-    }
-    
-    /* Увеличиваем поле для ввода */
-    #name {
-        min-height: 120px;
-        font-size: 18px;
-    }
-    
-    /* Увеличиваем выпадающие списки */
-    select, #attendance, #guests {
-        padding: 18px 20px;
-        font-size: 18px;
-    }
-    
-    /* Увеличиваем кнопку отправки */
-    .submit-btn {
-        padding: 20px;
-        font-size: 22px;
-    }
-}
-
 /* Для совсем маленьких экранов */
-@media (max-width: 400px) {
-    .block-title { font-size: 32px; }
-    .when-block, .where-block { padding: 20px 25px; }
-    .calendar-mini-dates { font-size: 16px; }
-    .mini-heart-date::after { font-size: 24px; }
-    .child-photo { width: 130px; height: 130px; }
-    .child-caption { font-size: 16px; }
-    
-    .radio-option input[type="radio"], 
-    .checkbox-option input[type="checkbox"] {
-        width: 30px !important;
-        height: 30px !important;
-    }
-    
-    .radio-option, .checkbox-option {
-        font-size: 18px;
-    }
 
-      /* Стили для таймера */
-    #timer span { font-size: 36px; }
-    #timer p { font-size: 14px; }
-}
 
 /* Таймер */
 .countdown {
@@ -538,14 +451,7 @@ button:hover {
 }
 
 
-@media (max-width: 400px) {
-    .block-title { font-size: 32px; }
-    .when-block, .where-block { padding: 20px 25px; }
-    .calendar-mini-dates { font-size: 16px; }
-    .mini-heart-date::after { font-size: 24px; }
-    .child-photo { width: 130px; height: 130px; }
-    .child-caption { font-size: 16px; }
-}
+
 
 /* Стили для радио-кнопок и чекбоксов */
 .radio-group, .checkbox-group {
@@ -637,18 +543,6 @@ button:hover {
     font-size: 16px;
 }
 
-/* Адаптация для мобилок */
-@media (max-width: 600px) {
-    .form-group label {
-        font-size: 18px;
-    }
-    
-    #name {
-        font-size: 16px;
-        padding: 12px 18px;
-        min-height: 80px;
-    }
-}
 
 /* ===== БОЛЬШОЕ ФОТО ПОСЛЕ ТЕКСТА ===== */
 .large-photo-section {
@@ -683,15 +577,127 @@ button:hover {
     transform: rotate(2deg) scale(1.01);
 }
 
-/* Адаптация для мобилок */
+
+/* ИСПРАВЛЕНИЕ КВАДРАТОВ В ОПРОСЕ */
+.checkbox-group, .radio-group {
+    gap: 8px !important;
+}
+
+.checkbox-option, .radio-option {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    padding: 5px 0 !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
+}
+
+.checkbox-option input[type="checkbox"], 
+.radio-option input[type="radio"] {
+    flex-shrink: 0 !important;
+    margin-top: 3px !important;
+}
+
+
+/* ===== ЕДИНАЯ АДАПТАЦИЯ ДЛЯ МОБИЛОК ===== */
+
+/* Для экранов до 600px (телефоны) */
 @media (max-width: 600px) {
+    /* Шапка и заголовки */
+    header h1 { font-size: 42px; }
+    .subtitle { font-size: 18px; }
+    .block-title { font-size: 36px; }
+    .block-text { font-size: 20px; }
+    .form-section h2 { font-size: 28px; }
+    
+    /* Текст для родных */
+    .family-text { 
+        font-size: 20px; 
+        padding: 30px 20px; 
+    }
+    .family-greeting { font-size: 26px; }
+    .family-text p:not(.family-greeting):not(.family-invite) { font-size: 19px; }
+    .family-invite { font-size: 22px; }
+    
+    /* Таймер */
+    #timer span { font-size: 36px; }
+    #timer p { font-size: 14px; }
+    
+    /* Детские фото */
+    .child-photo { 
+        width: 160px; 
+        height: 160px; 
+        border-width: 8px; 
+    }
+    .child-caption { font-size: 18px; }
+    
+    /* Большое фото */
     .large-photo {
         max-width: 100%;
         border-width: 8px;
     }
-    
     .large-photo-wrapper {
         padding: 10px;
+    }
+    
+    /* Чекбоксы и радио-кнопки */
+    .radio-option, .checkbox-option {
+        padding: 8px 0;
+        gap: 12px;
+        font-size: 18px;
+    }
+    .radio-option input[type="radio"], 
+    .checkbox-option input[type="checkbox"] {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px;
+        margin-right: 8px !important;
+    }
+    
+    /* Группы选项 */
+    .radio-group, .checkbox-group {
+        padding: 18px;
+        gap: 12px;
+    }
+    
+    /* Поле ФИО */
+    #name {
+        min-height: 120px;
+        font-size: 18px;
+    }
+    .form-group label {
+        font-size: 18px;
+    }
+    
+    /* Выпадающие списки */
+    select, #attendance, #guests {
+        padding: 18px 20px;
+        font-size: 18px;
+    }
+    
+    /* Кнопка отправки */
+    .submit-btn {
+        padding: 20px;
+        font-size: 22px;
+    }
+}
+
+/* Для совсем маленьких экранов (до 400px) */
+@media (max-width: 400px) {
+    .block-title { font-size: 32px; }
+    .when-block, .where-block { padding: 20px 25px; }
+    .calendar-mini-dates { font-size: 16px; }
+    .mini-heart-date::after { font-size: 24px; top: 0; }
+    .child-photo { width: 130px; height: 130px; }
+    .child-caption { font-size: 16px; }
+    
+    .radio-option input[type="radio"], 
+    .checkbox-option input[type="checkbox"] {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .radio-option, .checkbox-option {
+        font-size: 18px;
     }
 }
 
