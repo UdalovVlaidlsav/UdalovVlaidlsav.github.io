@@ -1,5 +1,5 @@
 // ===== ТАЙМЕР =====
-const weddingDate = new Date("Aug 15, 2026 16:00:00").getTime();
+const weddingDate = new Date("Aug 15, 2026 00:00:00").getTime();
 
 function updateTimer() {
     const now = new Date().getTime();
