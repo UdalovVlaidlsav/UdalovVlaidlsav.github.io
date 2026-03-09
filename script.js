@@ -1,3 +1,53 @@
+// ===== КОНВЕРТ-ЗАСТАВКА =====
+document.addEventListener('DOMContentLoaded', function() {
+    const envelopeOverlay = document.getElementById('envelopeOverlay');
+    const openBtn = document.getElementById('openInvitationBtn');
+    const container = document.querySelector('.container');
+    
+    // Скрываем основной контент сначала
+    if (container) {
+        container.style.opacity = '0';
+    }
+    
+    // Создаем конфетти
+    function createConfetti() {
+        const confettiContainer = document.getElementById('confettiContainer');
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = `hsl(${Math.random() * 60 + 20}, 80%, 60%)`;
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+                confettiContainer.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }, i * 100);
+        }
+    }
+    
+    // Запускаем конфетти при загрузке
+    createConfetti();
+    setInterval(createConfetti, 4000);
+    
+    // Открытие приглашения
+    if (openBtn) {
+        openBtn.addEventListener('click', function() {
+            envelopeOverlay.classList.add('hidden');
+            if (container) {
+                container.style.opacity = '1';
+            }
+            // Финальный взрыв конфетти
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 10);
+            }
+        });
+    }
+});
 // ===== ТАЙМЕР =====
 const weddingDate = new Date("Aug 15, 2026 00:00:00").getTime();
 
