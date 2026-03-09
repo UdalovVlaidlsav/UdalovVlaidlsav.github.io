@@ -926,3 +926,177 @@ button:hover {
         font-size: 24px;
     }
 }
+
+/* ===== ТАЙМИНГ ДНЯ ===== */
+.timeline-section {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+    padding: 40px 30px;
+    margin: 50px 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-title {
+    font-family: 'Caveat', cursive;
+    font-size: 42px;
+    color: #5a3e38;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.timeline-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.timeline-time {
+    min-width: 120px;
+}
+
+.time-badge {
+    background: #a67c73;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.timeline-event {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.event-icon {
+    font-size: 32px;
+    min-width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.event-content {
+    text-align: left;
+}
+
+.event-title {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: #5a3e38;
+    margin-bottom: 3px;
+}
+
+.event-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: #6d5a53;
+    font-style: italic;
+}
+
+.timeline-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed rgba(166, 124, 115, 0.3);
+}
+
+.footer-heart {
+    color: #a67c73;
+    font-size: 24px;
+    animation: heartBeat 1.5s ease infinite;
+}
+
+.footer-text {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: #5a3e38;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 600px) {
+    .timeline-title {
+        font-size: 36px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .timeline-time {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .time-badge {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .timeline-event {
+        width: 100%;
+    }
+    
+    .event-title {
+        font-size: 20px;
+    }
+    
+    .event-description {
+        font-size: 15px;
+    }
+    
+    .footer-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .timeline-section {
+        padding: 30px 20px;
+    }
+    
+    .event-icon {
+        font-size: 28px;
+        min-width: 40px;
+        height: 40px;
+    }
+}
